@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='style.css') }}"
+  />
+    <title>Login & Registeration</title>
+</head>
+<body>
+
+    <div  class="container">
+
+        <form action="/register" method="post">
+            <div class="leftie">
+                <h2>Registration:</h2>
+                <div class="boox">
+                    <div class="item1">
+                        <label for="">First Name</label>
+                        <input type="text" name="first_name">
+                    </div>
+                    <div class="item1">
+                        <label for="">Last Name</label>
+                        <input type="text" name="last_name">
+                    </div>
+                    <div class="item1">
+                        <label for="">Email</label>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="item1">
+                        <label for="">Password</label>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="item1">
+                        <label for="">confirm password</label>
+                        <input type="password" name="confirm_password">
+                    </div>
+                    <button class="b1">Register</button>
+                    {% with messages =
+                        get_flashed_messages(category_filter=["register"]) %} {% for message
+                        in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %} {% endwith %}
+                </div>
+
+            </div>           
+        </form>
+        <form action="/login" method="post">
+            <div class="rightie">
+                <h2>Login:</h2>
+                <div class="boox">
+                    <div class="item1">
+                        <label for="">Email</label>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="item1">
+                        <label for="password">Password</label>
+                        <input type="password" name="password">
+                    </div>
+                    <button class="b1">Login</button>
+                    {% with messages = get_flashed_messages(category_filter=["login"])
+                    %} {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %} {% endwith %}
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

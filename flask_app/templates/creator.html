@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='style2.css') }}"
+  />
+    <title>Detail page for creator</title>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <h1>Hello {{username.first_name}}!</h1>
+            <div>
+            <a href="/logout" class="b1">Logout</a>
+            </div>
+        </div>
+        <form action="">
+            
+            <div class="leftie">
+                <h2>{{books.name}}</h2>
+                <div>
+                    <div class="item">
+                        <label for="user">Added by:</label>
+                        <label for="user">{{users.first_name}}</label>
+                    </div>
+                    <div class="item">
+                        <label for="creation">Added on:</label>
+                        <label for="creation">{{books.created_at}}</label>
+                    </div>
+                    <div class="item">
+                        <label for="update">Last updated on:</label>
+                        <label for="update">{{books.created_at}}</label>
+                    </div>
+                    <div class="item">
+                        <label for="description">Description</label>
+                        <textarea name="" id="">{{books.description}}</textarea>
+                    </div>
+    
+                </div>
+                <div>
+                    <a href="/books/update" class="btn">Update</a>
+                    <a href="/books/delete" class="btn">Delete</a>
+                </div>
+            </div>
+            <div class="rightie">
+                <h2>Users who like this book:</h2>
+                {%for book in books%}
+                <p>{{books.name}}</p>
+                {%endfor%}
+    
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

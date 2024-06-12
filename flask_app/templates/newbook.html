@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style1.css') }}"
+    />
+    <title>Book Club</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="top">
+            <h1>Hello {{username.first_name}}!</h1>
+            <div>
+            <a href="/logout" class="b1">Logout</a>
+            </div>
+            <form action="/book/create" method="post" class="form">
+                <input type="hidden" name="user_id" value="{{current_user.id}}">
+                <div class="bodiee">
+                    <div class="leftie">
+                        <h2>Add a new book</h2>
+                        <div class="item1">
+                            <label for="Title">Title</label>
+                            <input type="text">
+                        </div>
+                        <div class="item1">
+                            <label for="Description">Description</label>
+                            <textarea name="" id=""></textarea>
+                        </div>
+                        <button type="submit" class="b1">Add</button>
+                    </div>
+                    <div class="rightie">
+                        <h2>All Books</h2>
+                        <div class="item2">
+                            {%for book in books%}
+                            <div>
+                                <p>
+                                    <a href="/books/{{book.id}}">{{book.name}}</a>
+                                </p>
+                                {% if current_user.id == book.user.id %}
+                                    <p>This is one of your favorites</p>
+                                {% else %}
+                                    <a href="">Add to Favorites</a>
+                                {% endif %}
+                            </div>
+        
+                            {%endfor%}
+                        </div>
+                    </div>
+            </form>
+    </div>
+</body>
+</html>

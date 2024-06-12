@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='style3.css') }}"
+  />
+    <title>Details page for viewer</title>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <h1>Hello {{username.first_name}}!</h1>
+            <div>
+            <a href="/logout" class="b1">Logout</a>
+            </div>
+        </div>
+        <div class="leftie">
+            <h2>{{books.name}}</h2>
+            <div class="item">
+                <label for="user">Added by:</label>
+                <label for="user">{{users.first_name}}</label>
+            </div>
+            <div class="item">
+                <label for="creation">Added on:</label>
+                <label for="creation">{{books.created_at}}</label>
+            </div>
+            <div class="item">
+                <label for="update">Last updated on:</label>
+                <label for="update">{{books.created_at}}</label>
+            </div>
+            <div class="item">
+                <label for="description">Description</label>
+                <label for="description">{{books.description}}</label>
+            </div>
+
+
+        </div>
+        <div class="rightie">
+            <h2>Users who like this book:</h2>
+            {%for favorite in favorites%}
+            <p>{{books.favorite}}</p>
+            {%endfor%}
+            <a href="Add to favorites"></a>
+        </div>
+    </div>
+    
+</body>
+</html>
